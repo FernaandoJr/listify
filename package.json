@@ -4,9 +4,11 @@
 	"description": "Gerencie listas de compras com Node.js, Express, TypeScript e SQLite",
 	"main": "dist/app.js",
 	"scripts": {
-		"dev": "ts-node-dev src/app.ts",
+		"dev": "ts-node-dev --respawn --transpile-only src/app.ts",
 		"build": "tsc",
-		"start": "node dist/app.js"
+		"start": "node dist/app.js",
+		"setup": "ts-node src/database/initDb.ts",
+		"complete-setup": "npm run build && npm run setup && npm run dev"
 	},
 	"authors": [
 		{

@@ -2,17 +2,6 @@
 
 Uma aplicação web moderna e responsiva para gerenciar listas de compras, construída com Node.js, Express, TypeScript, SQLite e EJS, utilizando Tailwind CSS para um design moderno.
 
-## ✨ Características Principais
-
--   **🔐 Autenticação de Usuários**: Sistema seguro de registro e login com criptografia
--   **📝 Gerenciamento de Listas**: Criar, visualizar, editar e excluir listas de compras
--   **🛍️ Gerenciamento de Itens**: Adicionar itens com quantidades, marcar como comprado e remover
--   **📊 Progresso em Tempo Real**: Acompanhamento visual do progresso de cada lista
--   **📱 Design Responsivo**: Interface moderna que funciona em desktop e dispositivos móveis
--   **🗄️ Banco SQLite**: Base de dados leve e baseada em arquivo para persistência
--   **🎨 Interface em Português**: Totalmente localizada para o português brasileiro
--   **⚡ Tailwind CSS**: Design system moderno para uma interface elegante
-
 ## 🚀 Stack Tecnológica
 
 ### Backend

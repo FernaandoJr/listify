@@ -1,0 +1,45 @@
+{
+	"name": "listify",
+	"version": "1.0.0",
+	"description": "Gerencie listas de compras com Node.js, Express, TypeScript e SQLite",
+	"main": "dist/app.js",
+	"scripts": {
+		"dev": "ts-node-dev src/app.ts",
+		"build": "tsc",
+		"start": "node dist/app.js"
+	},
+	"authors": [
+		{
+			"name": "Fernando",
+			"email": "feraando.divino@gmail.com"
+		},
+		{
+			"name": "Luis Felipe Piasentini",
+			"email": "luis.piasentini@gmail.com"
+		}
+	],
+	"type": "commonjs",
+	"repository": "https://github.com/FernaandoJr/listify.git",
+	"engines": {
+		"node": ">=16.0.0"
+	},
+	"dependencies": {
+		"bcrypt": "^5.1.1",
+		"ejs": "^3.1.10",
+		"express": "^4.19.2",
+		"express-session": "^1.18.1",
+		"express-validator": "^7.2.1",
+		"sqlite": "^5.1.1",
+		"sqlite3": "^5.1.7"
+	},
+	"devDependencies": {
+		"@types/bcrypt": "^5.0.2",
+		"@types/express": "^4.17.21",
+		"@types/express-session": "^1.18.2",
+		"@types/node": "^20.11.19",
+		"rimraf": "^5.0.5",
+		"ts-node": "^10.9.2",
+		"ts-node-dev": "^2.0.0",
+		"typescript": "^5.3.3"
+	}
+}

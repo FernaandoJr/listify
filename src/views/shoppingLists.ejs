@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Minhas Listas de Compras - Listify</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+			rel="stylesheet" />
+	</head>
+	<body class="min-h-screen bg-gray-50">
+		<div class="max-w-6xl mx-auto px-4 py-8">
+			<div class="flex justify-between items-center mb-8">
+				<div>
+					<h1 class="text-4xl font-bold text-gray-800 mb-2">
+						🛒 Minhas Listas de Compras
+					</h1>
+					<p class="text-gray-600">
+						Organize suas compras como um profissional
+					</p>
+				</div>
+				<a
+					href="/logout"
+					class="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+					Sair
+				</a>
+			</div>
+
+			<div class="space-y-8">
+				<div
+					class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+					<h3 class="text-xl font-semibold text-gray-800 mb-4">
+						Criar Nova Lista
+					</h3>
+					<form
+						method="POST"
+						action="/shopping-lists"
+						class="flex gap-4">
+						<input
+							type="text"
+							name="name"
+							placeholder="Digite o nome da lista..."
+							required
+							class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors" />
+						<button
+							type="submit"
+							class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 whitespace-nowrap">
+							Criar Lista
+						</button>
+					</form>
+				</div>
+
+				<% if (lists.length === 0) { %>
+				<div
+					class="bg-white rounded-xl shadow-sm border border-gray-200 p-12 text-center">
+					<div class="text-6xl mb-4">📋</div>
+					<h3 class="text-xl font-semibold text-gray-800 mb-2">
+						Nenhuma lista criada ainda!
+					</h3>
+					<p class="text-gray-600">
+						Crie sua primeira lista de compras acima para começar.
+					</p>
+				</div>
+				<% } else { %>
+				<div
+					class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					<% lists.forEach(list => { %>
+					<div
+						class="bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200">
+						<a
+							href="/shopping-lists/<%= list.id %>"
+							class="block p-6 hover:bg-gray-50 rounded-xl transition-colors">
+							<h3
+								class="text-lg font-semibold text-gray-800 mb-2">
+								<%= list.name %>
+							</h3>
+							<p class="text-gray-600 mb-4">
+								Clique para ver e gerenciar seus itens
+							</p>
+						</a>
+
+						<div class="px-6 pb-6 flex gap-2">
+							<a
+								href="/shopping-lists/<%= list.id %>"
+								class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+								Ver Itens
+							</a>
+							<form
+								method="POST"
+								action="/shopping-lists/<%= list.id %>/delete"
+								class="flex-1">
+								<button
+									type="submit"
+									class="w-full bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+									onclick="return confirm('Tem certeza que deseja excluir esta lista?');">
+									Excluir
+								</button>
+							</form>
+						</div>
+					</div>
+					<% }) %>
+				</div>
+				<% } %>
+			</div>
+		</div>
+		<script src="/js/app.js"></script>
+	</body>
+</html>

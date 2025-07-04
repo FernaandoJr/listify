@@ -1,24 +1,14 @@
 # 🛒 Listify - Gerenciador de Listas de Compras
 
-Uma aplicação web simple## 📋 Comandos disponíveis
+Uma aplicação web simples e prática para criar e gerenciar suas listas de compras.
 
-### 🚀 Comandos de Setup Rápido
-```bash
-npm run setup-all       # Instala, builda, configura DB e roda em produção
-npm run setup-dev       # Instala, configura DB e roda em desenvolvimento  
-npm run complete-setup   # Instala, builda, configura DB e roda em dev
-```
+## 👥 Autores
 
-### ⚙️ Comandos Individuais
-```bash
-npm install             # Instala dependências
-npm run setup          # Configura o banco de dados apenas
-npm run build          # Compila TypeScript para JavaScript
-npm run dev            # Inicia em modo desenvolvimento (hot reload)
-npm start              # Inicia em modo produção (código compilado)
-```ica para criar e gerenciar suas listas de compras.
+- **Fernando** - [fernando.divino@gmail.com](https://github.com/FernaandoJr)
+- **Luis Felipe Piasentini** - [luis.piasentini@gmail.com](https://github.com/LuisPiasentini)
 
-## � O que faz
+
+## 📱 O que faz
 
 - ✅ Criar e organizar listas de compras
 - ✅ Adicionar itens com quantidade
@@ -26,7 +16,7 @@ npm start              # Inicia em modo produção (código compilado)
 - ✅ Acompanhar progresso das compras
 - ✅ Sistema de login seguro
 
-## �️ Tecnologias
+## 🛠️ Tecnologias
 
 **Backend:**
 - Node.js + Express + TypeScript
@@ -89,13 +79,22 @@ Este comando faz **tudo automaticamente**:
 4. **Adicione itens** às suas listas
 5. **Marque itens** como comprados durante as compras
 
-## � Comandos disponíveis
+## 📋 Comandos disponíveis
 
+### 🚀 Comandos de Setup Rápido
 ```bash
-npm run dev          # Inicia o servidor em desenvolvimento
-npm run setup        # Configura o banco de dados
-npm run build        # Compila o código TypeScript
-npm start           # Inicia o servidor em produção
+npm run setup-all       # Instala, builda, configura DB e roda em produção
+npm run setup-dev       # Instala, configura DB e roda em desenvolvimento  
+npm run complete-setup   # Instala, builda, configura DB e roda em dev
+```
+
+### ⚙️ Comandos Individuais
+```bash
+npm install             # Instala dependências
+npm run setup          # Configura o banco de dados apenas
+npm run build          # Compila TypeScript para JavaScript
+npm run dev            # Inicia em modo desenvolvimento (hot reload)
+npm start              # Inicia em modo produção (código compilado)
 ```
 
 ## 📁 Estrutura do projeto
@@ -114,18 +113,13 @@ public/
 └── js/               # JavaScript do frontend
 ```
 
-## � Segurança
+## 🔒 Segurança
 
 - Senhas criptografadas com bcrypt
 - Autenticação por sessões
 - Validação de dados de entrada
 - Proteção contra SQL injection
 
-## 👥 Autores
-
-- **Fernando** - [fernando.divino@gmail.com](mailto:fernando.divino@gmail.com)
-- **Luis Felipe Piasentini** - [luis.piasentini@gmail.com](mailto:luis.piasentini@gmail.com)
-
-## � Licença
+## 📄 Licença
 
 Este projeto está licenciado sob a licença MIT.

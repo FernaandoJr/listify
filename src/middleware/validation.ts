@@ -5,46 +5,46 @@ export const validateRegistration = [
 	body("name")
 		.trim()
 		.isLength({ min: 2, max: 50 })
-		.withMessage("Name must be between 2 and 50 characters"),
+		.withMessage("Nome deve ter entre 2 e 50 caracteres"),
 
 	body("email")
 		.isEmail()
 		.normalizeEmail()
-		.withMessage("Please provide a valid email"),
+		.withMessage("Por favor, forneça um e-mail válido"),
 
 	body("password")
 		.isLength({ min: 6 })
-		.withMessage("Password must be at least 6 characters long")
+		.withMessage("Senha deve ter pelo menos 6 caracteres")
 		.matches(/\d/)
-		.withMessage("Password must contain at least one number"),
+		.withMessage("Senha deve conter pelo menos um número"),
 ]
 
 export const validateLogin = [
 	body("email")
 		.isEmail()
 		.normalizeEmail()
-		.withMessage("Please provide a valid email"),
+		.withMessage("Por favor, forneça um e-mail válido"),
 
-	body("password").notEmpty().withMessage("Password is required"),
+	body("password").notEmpty().withMessage("Senha é obrigatória"),
 ]
 
 export const validateShoppingList = [
 	body("name")
 		.trim()
 		.isLength({ min: 1, max: 100 })
-		.withMessage("List name must be between 1 and 100 characters"),
+		.withMessage("Nome da lista deve ter entre 1 e 100 caracteres"),
 ]
 
 export const validateShoppingItem = [
 	body("description")
 		.trim()
 		.isLength({ min: 1, max: 200 })
-		.withMessage("Item description must be between 1 and 200 characters"),
+		.withMessage("Descrição do item deve ter entre 1 e 200 caracteres"),
 
 	body("quantity")
 		.optional()
 		.isInt({ min: 1, max: 999 })
-		.withMessage("Quantity must be a number between 1 and 999"),
+		.withMessage("Quantidade deve ser um número entre 1 e 999"),
 ]
 
 export const handleValidationErrors = (

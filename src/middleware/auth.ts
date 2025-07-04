@@ -8,5 +8,5 @@ export function ensureAuthenticated(
 	if (req.session && (req.session as any).userId) {
 		return next()
 	}
-	res.status(401).json({ success: false, message: "Authentication required" })
+	res.status(401).json({ success: false, message: "Autenticação necessária" })
 }

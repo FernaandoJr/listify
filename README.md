@@ -8,8 +8,6 @@ Uma aplicação web simples e prática para criar e gerenciar suas listas de com
 - **Luis Felipe Piasentini** - [GitHub](https://github.com/LuisPiasentini)
 
 
-@LuisPiasentini
-
 ## 🏗️ Arquitetura MVC
 
 ### **Model** (`src/models/`)

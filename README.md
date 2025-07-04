@@ -1,231 +1,131 @@
-# 🛒 Listify - Listas de Compras Inteligentes
+# 🛒 Listify - Gerenciador de Listas de Compras
 
-Uma aplicação web moderna e responsiva para gerenciar listas de compras, construída com Node.js, Express, TypeScript, SQLite e EJS, utilizando Tailwind CSS para um design moderno.
+Uma aplicação web simple## 📋 Comandos disponíveis
 
-## 🚀 Stack Tecnológica
+### 🚀 Comandos de Setup Rápido
+```bash
+npm run setup-all       # Instala, builda, configura DB e roda em produção
+npm run setup-dev       # Instala, configura DB e roda em desenvolvimento  
+npm run complete-setup   # Instala, builda, configura DB e roda em dev
+```
 
-### Backend
+### ⚙️ Comandos Individuais
+```bash
+npm install             # Instala dependências
+npm run setup          # Configura o banco de dados apenas
+npm run build          # Compila TypeScript para JavaScript
+npm run dev            # Inicia em modo desenvolvimento (hot reload)
+npm start              # Inicia em modo produção (código compilado)
+```ica para criar e gerenciar suas listas de compras.
 
--   **Node.js** - Runtime JavaScript server-side
--   **Express.js** - Framework web minimalista e flexível
--   **TypeScript** - JavaScript com tipagem estática
--   **SQLite** - Banco de dados relacional leve
--   **bcrypt** - Criptografia segura para senhas
+## � O que faz
 
-### Frontend
+- ✅ Criar e organizar listas de compras
+- ✅ Adicionar itens com quantidade
+- ✅ Marcar itens como comprados
+- ✅ Acompanhar progresso das compras
+- ✅ Sistema de login seguro
 
--   **EJS** - Engine de templates para renderização server-side
--   **Tailwind CSS** - Framework CSS utility-first via CDN
--   **JavaScript Vanilla** - Interatividade do lado cliente
+## �️ Tecnologias
 
-### Desenvolvimento
+**Backend:**
+- Node.js + Express + TypeScript
+- SQLite (banco de dados)
+- Autenticação com sessões
 
--   **ts-node-dev** - Hot reloading para desenvolvimento
--   **express-session** - Gerenciamento de sessões
--   **sqlite3** - Driver SQLite para Node.js
+**Frontend:**
+- HTML, CSS e JavaScript
+- Tailwind CSS para estilização
+- Interface responsiva
 
-## 🏗️ Arquitetura
+## 🚀 Como usar
 
-O projeto segue o padrão **MVC (Model-View-Controller)** com separação clara de responsabilidades:
+### ⚡ Instalação Rápida (Tudo em um comando)
 
-### 📂 Estrutura de Pastas
+```bash
+git clone https://github.com/FernaandoJr/listify.git
+cd listify
+npm run setup-all
+```
+
+Este comando faz **tudo automaticamente**:
+- ✅ Instala todas as dependências
+- ✅ Compila o código TypeScript  
+- ✅ Configura o banco de dados
+- ✅ Inicia o servidor em produção
+
+### 🛠️ Instalação Passo a Passo
+
+1. **Clone o projeto**
+   ```bash
+   git clone https://github.com/FernaandoJr/listify.git
+   cd listify
+   ```
+
+2. **Instale as dependências**
+   ```bash
+   npm install
+   ```
+
+3. **Configure o banco de dados**
+   ```bash
+   npm run setup
+   ```
+
+4. **Inicie o servidor**
+   ```bash
+   npm run dev
+   ```
+
+5. **Acesse a aplicação**
+   
+   Abra o navegador em: `http://localhost:3000`
+
+### Usando a aplicação
+
+1. **Registre-se** criando uma conta
+2. **Faça login** com suas credenciais  
+3. **Crie listas** de compras
+4. **Adicione itens** às suas listas
+5. **Marque itens** como comprados durante as compras
+
+## � Comandos disponíveis
+
+```bash
+npm run dev          # Inicia o servidor em desenvolvimento
+npm run setup        # Configura o banco de dados
+npm run build        # Compila o código TypeScript
+npm start           # Inicia o servidor em produção
+```
+
+## 📁 Estrutura do projeto
 
 ```
 src/
-├── 🚀 app.ts                 # Ponto de entrada da aplicação
-├── 🎮 controllers/           # Lógica de negócio
-│   ├── auth.ts              # Controlador de autenticação
-│   └── shoppingList.ts      # Controlador das listas
-├── 🗄️ database/             # Configuração do banco de dados
-│   ├── database.ts          # Conexão com o banco
-│   └── initDb.ts            # Inicialização das tabelas
-├── 🛡️ middleware/           # Middlewares do Express
-│   ├── auth.ts              # Middleware de autenticação
-│   └── validation.ts        # Middleware de validação
-├── 📊 models/               # Modelos de dados
-│   ├── user.ts              # Modelo e operações de usuário
-│   └── shoppingList.ts      # Modelos das listas
-├── 🛤️ routes/               # Roteamento de URLs
-│   ├── auth.ts              # Rotas de autenticação
-│   └── shoppingList.ts      # Rotas das listas
-├── 🏷️ types/                # Definições TypeScript
-│   └── session.ts           # Tipos de sessão
-└── 🎨 views/                # Templates EJS
-    ├── login.ejs            # Página de login
-    ├── register.ejs         # Página de cadastro
-    ├── shoppingLists.ejs    # Visão geral das listas
-    └── listDetails.ejs      # Detalhes da lista
+├── app.ts              # Servidor principal
+├── controllers/        # Lógica de negócio
+├── models/            # Acesso ao banco de dados  
+├── routes/            # Rotas da API
+├── middleware/        # Validações e autenticação
+└── database/          # Configuração do banco
+
+public/
+├── *.html             # Páginas da aplicação
+└── js/               # JavaScript do frontend
 ```
 
-### 🔄 Fluxo da Aplicação
+## � Segurança
 
-1. **Rota** recebe a requisição HTTP
-2. **Middleware** processa autenticação/validação
-3. **Controller** executa a lógica de negócio
-4. **Model** interage com o banco de dados
-5. **View** renderiza a resposta para o usuário
+- Senhas criptografadas com bcrypt
+- Autenticação por sessões
+- Validação de dados de entrada
+- Proteção contra SQL injection
 
-## 🗃️ Esquema do Banco de Dados
+## 👥 Autores
 
-### 👤 Tabela Users (Usuários)
+- **Fernando** - [fernando.divino@gmail.com](mailto:fernando.divino@gmail.com)
+- **Luis Felipe Piasentini** - [luis.piasentini@gmail.com](mailto:luis.piasentini@gmail.com)
 
-```sql
-CREATE TABLE users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    email TEXT UNIQUE NOT NULL,
-    password_hash TEXT NOT NULL
-);
-```
+## � Licença
 
-### 📋 Tabela Shopping Lists (Listas de Compras)
-
-```sql
-CREATE TABLE shopping_lists (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    user_id INTEGER NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(id)
-);
-```
-
-### 🛒 Tabela Shopping List Items (Itens das Listas)
-
-```sql
-CREATE TABLE shopping_list_items (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    description TEXT NOT NULL,
-    quantity INTEGER DEFAULT 1,
-    purchased BOOLEAN DEFAULT 0,
-    shopping_list_id INTEGER NOT NULL,
-    FOREIGN KEY (shopping_list_id) REFERENCES shopping_lists(id)
-);
-```
-
-### 🔗 Relacionamentos
-
--   Um **usuário** pode ter múltiplas **listas de compras**
--   Uma **lista** pode ter múltiplos **itens**
--   Exclusão em cascata para manter integridade dos dados
-
-## ⚙️ Instalação e Configuração
-
-### Pré-requisitos
-
--   **Node.js** (versão 16 ou superior)
--   **npm** (vem com o Node.js)
--   **Git** (para clonar o repositório)
-
-### 🚀 Passo a Passo
-
-1. **📥 Clone o repositório**
-
-    ```bash
-    git clone https://github.com/FernaandoJr/listify.git
-    cd listify
-    ```
-
-2. **📦 Instale as dependências**
-
-    ```bash
-    npm install
-    ```
-
-3. **🗄️ Inicialize o banco de dados**
-
-    ```bash
-    npx ts-node src/database/initDb.ts
-    ```
-
-4. **🔥 Inicie o servidor de desenvolvimento**
-
-    ```bash
-    npm run dev
-    ```
-
-5. **🌐 Acesse a aplicação**
-
-    Abra seu navegador e navegue para `http://localhost:3000`
-
-### 🐳 Alternativa com Docker (Opcional)
-
-```bash
-# Em breve - Docker configuration coming soon
-```
-
-## 📖 Como Usar
-
-### 🔐 Registro e Login
-
-1. 🏠 Visite a página inicial da aplicação
-2. 📝 Crie uma nova conta clicando em "Cadastre-se aqui"
-3. ✍️ Preencha seus dados e envie o formulário
-4. 🔑 Faça login com suas credenciais
-
-### 📋 Gerenciando Listas de Compras
-
-1. 📊 Após o login, você verá seu painel de listas
-2. ➕ Crie uma nova lista inserindo um nome e clicando em "Criar Lista"
-3. 👆 Clique em qualquer lista para visualizar e gerenciar seus itens
-
-### 🛍️ Gerenciando Itens
-
-1. 📝 Na lista, adicione itens inserindo descrição e quantidade
-2. ✅ Marque itens como comprados clicando na checkbox
-3. 🗑️ Remova itens clicando no botão "Remover"
-4. 📈 Visualize estatísticas de progresso no topo da lista
-
-### 📊 Funcionalidades Avançadas
-
--   **Progresso Visual**: Acompanhe % de itens comprados
--   **Estatísticas**: Total, comprados, restantes
--   **Responsivo**: Use em qualquer dispositivo
--   **Seguro**: Seus dados são protegidos
-
-## 🛠️ Scripts Disponíveis
-
-| Script              | Comando                              | Descrição                           |
-| ------------------- | ------------------------------------ | ----------------------------------- |
-| **Desenvolvimento** | `npm run dev`                        | Inicia o servidor com hot reloading |
-| **Banco de Dados**  | `npx ts-node src/database/initDb.ts` | Inicializa as tabelas do banco      |
-| **Build**           | `npm run build`                      | Compila o TypeScript (em breve)     |
-| **Produção**        | `npm start`                          | Inicia em modo produção (em breve)  |
-| **Teste**           | `npm test`                           | Executa testes unitários (em breve) |
-
-## 🎨 Características Detalhadas
-
-### 🔒 Sistema de Autenticação
-
--   ✅ Hash seguro de senhas com bcrypt (salt rounds: 10)
--   ✅ Autenticação baseada em sessões
--   ✅ Rotas protegidas com middleware
--   ✅ Redirecionamento automático
--   ✅ Validação de entrada com express-validator
-
-### 🎯 Experiência do Usuário
-
--   ✅ Design moderno e responsivo com **Tailwind CSS**
--   ✅ Interface completamente em **português brasileiro**
--   ✅ Elementos interativos com efeitos hover
--   ✅ Acompanhamento de progresso em tempo real
--   ✅ Validação de formulários e tratamento de erros
--   ✅ Interface otimizada para mobile
--   ✅ Feedback visual para ações do usuário
-
-### 💾 Operações de Banco de Dados
-
--   ✅ Registro e login de usuários
--   ✅ Operações CRUD para listas de compras
--   ✅ Operações CRUD para itens das listas
--   ✅ Relacionamentos adequados com chaves estrangeiras
--   ✅ Exclusão em cascata para integridade dos dados
--   ✅ Consultas parametrizadas (prevenção SQL injection)
-
-## 🔐 Características de Segurança
-
--   🛡️ **Criptografia de Senhas**: Hash com bcrypt e salt
--   🔒 **Autenticação por Sessão**: Gerenciamento seguro de sessões
--   🚪 **Rotas Protegidas**: Middleware de autorização
--   💉 **Prevenção SQL Injection**: Consultas parametrizadas
--   ✅ **Verificação de Autorização**: Usuários só acessam seus dados
--   🔄 **Regeneração de Sessão**: Nova sessão a cada login
+Este projeto está licenciado sob a licença MIT.

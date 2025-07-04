@@ -8,7 +8,9 @@
 		"build": "tsc",
 		"start": "node dist/app.js",
 		"setup": "ts-node src/database/initDb.ts",
-		"complete-setup": "npm run build && npm run setup && npm run dev"
+		"setup-all": "npm install && npm run build && npm run setup && npm start",
+		"setup-dev": "npm install && npm run setup && npm run dev",
+		"complete-setup": "npm install && npm run build && npm run setup && npm run dev"
 	},
 	"authors": [
 		{

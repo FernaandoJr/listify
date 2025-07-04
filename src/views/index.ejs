@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title><%= title || 'Listify - Smart Shopping Lists' %></title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+			rel="stylesheet" />
+	</head>
+	<body class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+		<!-- Header -->
+		<header class="bg-white shadow-sm">
+			<div
+				class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+				<div class="flex items-center gap-2">
+					<span class="text-3xl">🛒</span>
+					<h1 class="text-2xl font-bold text-gray-800">Listify</h1>
+				</div>
+				<div class="flex gap-4 items-center justify-center">
+					<% if (user) { %>
+					<span class="text-gray-600 font-medium"
+						>Olá, <%= user.name %>!</span
+					>
+					<a
+						href="/shopping-lists"
+						class="text-blue-600 hover:text-blue-800 font-medium transition-colors">
+						Minhas Listas
+					</a>
+					<form action="/api/logout" method="POST" class="inline">
+						<button
+							type="submit"
+							class="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+							Sair
+						</button>
+					</form>
+					<% } else { %>
+					<a
+						href="/login"
+						class="text-blue-600 hover:text-blue-800 font-medium transition-colors">
+						Entrar
+					</a>
+					<a
+						href="/register"
+						class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+						Criar Conta
+					</a>
+					<% } %>
+				</div>
+			</div>
+		</header>
+
+		<!-- Hero Section -->
+		<main class="max-w-6xl mx-auto px-4 py-16">
+			<div class="text-center mb-16">
+				<div class="text-8xl mb-6">🛍️</div>
+				<h2 class="text-5xl font-bold text-gray-800 mb-6">
+					Organize suas compras de forma
+					<span class="text-blue-600">inteligente</span>
+				</h2>
+				<p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+					Crie listas de compras, marque itens como comprados e nunca
+					mais esqueça nada no supermercado.
+				</p>
+
+				<% if (user) { %>
+				<div class="flex flex-col sm:flex-row gap-4 justify-center">
+					<a
+						href="/shopping-lists"
+						class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-xl transition-colors duration-200 text-lg shadow-lg">
+						Ver Minhas Listas
+					</a>
+				</div>
+				<% } else { %>
+				<div class="flex flex-col sm:flex-row gap-4 justify-center">
+					<a
+						href="/register"
+						class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-xl transition-colors duration-200 text-lg shadow-lg">
+						Começar Agora - É Grátis
+					</a>
+					<a
+						href="/login"
+						class="bg-white hover:bg-gray-50 text-blue-600 font-semibold py-4 px-8 rounded-xl transition-colors duration-200 text-lg shadow-lg border border-blue-200">
+						Já tenho conta
+					</a>
+				</div>
+				<% } %>
+			</div>
+
+			<!-- Features Section -->
+			<div class="grid md:grid-cols-3 gap-8 mb-16">
+				<% const features = [ { icon: "📝", title: "Listas Simples",
+				desc: "Crie e organize suas listas de compras de forma rápida e
+				intuitiva." }, { icon: "✅", title: "Marcar Itens", desc:
+				"Marque itens como comprados e acompanhe seu progresso em tempo
+				real." }, { icon: "💾", title: "Sempre Salvo", desc: "Suas
+				listas ficam sempre salvas e acessíveis de qualquer lugar." } ];
+				features.forEach(function(feature) { %>
+				<div
+					class="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow">
+					<div class="text-5xl mb-4"><%= feature.icon %></div>
+					<h3 class="text-xl font-semibold text-gray-800 mb-3">
+						<%= feature.title %>
+					</h3>
+					<p class="text-gray-600"><%= feature.desc %></p>
+				</div>
+				<% }); %>
+			</div>
+
+			<!-- Demo Section -->
+			<div class="bg-white rounded-2xl p-8 shadow-lg">
+				<h3 class="text-2xl font-bold text-gray-800 text-center mb-8">
+					Como funciona
+				</h3>
+				<div class="grid md:grid-cols-3 gap-8">
+					<% const steps = [ { num: 1, title: "Crie sua conta", desc:
+					"Rápido e gratuito" }, { num: 2, title: "Adicione itens",
+					desc: "Monte sua lista de compras" }, { num: 3, title: "Vá
+					às compras", desc: "Marque itens conforme compra" } ];
+					steps.forEach(function(step) { %>
+					<div class="text-center">
+						<div
+							class="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+							<span class="text-2xl font-bold text-blue-600"
+								><%= step.num %></span
+							>
+						</div>
+						<h4 class="font-semibold text-gray-800 mb-2">
+							<%= step.title %>
+						</h4>
+						<p class="text-gray-600"><%= step.desc %></p>
+					</div>
+					<% }); %>
+				</div>
+			</div>
+		</main>
+
+		<!-- Footer -->
+		<footer class="bg-gray-800 text-white py-8 mt-16">
+			<div class="max-w-6xl mx-auto px-4 text-center">
+				<div class="flex items-center justify-center gap-2 mb-4">
+					<span class="text-2xl">🛒</span>
+					<span class="text-xl font-bold">Listify</span>
+				</div>
+				<p class="text-gray-400">
+					Seu companheiro inteligente de compras
+				</p>
+				<% if (new Date().getFullYear()) { %>
+				<p class="text-gray-500 text-sm mt-2">
+					© <%= new Date().getFullYear() %> Listify. Todos os direitos
+					reservados.
+				</p>
+				<% } %>
+			</div>
+		</footer>
+	</body>
+</html>

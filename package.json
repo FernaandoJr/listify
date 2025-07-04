@@ -1,6 +1,6 @@
 {
 	"name": "listify",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "Gerencie listas de compras com Node.js, Express, TypeScript e SQLite",
 	"main": "dist/app.js",
 	"scripts": {
@@ -15,7 +15,7 @@
 	"authors": [
 		{
 			"name": "Fernando",
-			"email": "feraando.divino@gmail.com"
+			"email": "fernaando.divino@gmail.com"
 		},
 		{
 			"name": "Luis Felipe Piasentini",
@@ -29,6 +29,7 @@
 	},
 	"dependencies": {
 		"bcrypt": "^5.1.1",
+		"ejs": "^3.1.10",
 		"express": "^4.19.2",
 		"express-session": "^1.18.1",
 		"express-validator": "^7.2.1",

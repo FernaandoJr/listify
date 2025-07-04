@@ -4,7 +4,7 @@ let listas = []
 // Inicializar
 async function iniciar() {
 	if (!(await verificarLogin())) {
-		window.location.href = "/login.html"
+		window.location.href = "/login"
 		return
 	}
 
@@ -66,7 +66,7 @@ async function excluirLista(id) {
 async function logout() {
 	try {
 		await fetch("/api/logout", { method: "POST" })
-		window.location.href = "/login.html"
+		window.location.href = "/login"
 	} catch (error) {
 		console.error("Erro:", error)
 	}
@@ -91,7 +91,7 @@ function mostrarListas() {
 		div.innerHTML = `
 			<h3 class="font-bold mb-2">${lista.name}</h3>
 			<div class="flex gap-2">
-				<a href="/list-details.html?id=${lista.id}" class="bg-blue-500 text-white px-4 py-2 rounded flex-1 text-center">
+				<a href="/list-details?id=${lista.id}" class="bg-blue-500 text-white px-4 py-2 rounded flex-1 text-center">
 					Ver Itens
 				</a>
 				<button onclick="excluirLista(${lista.id})" class="bg-red-500 text-white px-4 py-2 rounded">

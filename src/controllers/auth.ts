@@ -8,15 +8,31 @@ export async function getRegister(req: Request, res: Response) {
 
 export async function postRegister(req: Request, res: Response) {
 	const { name, email, password } = req.body
-	const password_hash = await bcrypt.hash(password, 10)
 
-	const existingUser = await findUserByEmail(email)
-	if (existingUser) {
-		return res.status(400).json({ success: false, message: "E-mail já está cadastrado" })
+	try {
+		const existingUser = await findUserByEmail(email)
+		if (existingUser) {
+			return res.render("register", {
+				error: "E-mail já está cadastrado",
+				formData: { name, email },
+			})
+		}
+
+		const password_hash = await bcrypt.hash(password, 10)
+		await createUser({ name, email, password_hash })
+
+		// Redirect para login com sucesso
+		res.render("login", {
+			error: null,
+			success: "Conta criada com sucesso! Faça login para continuar.",
+			formData: { email },
+		})
+	} catch (error) {
+		res.render("register", {
+			error: "Erro interno do servidor. Tente novamente.",
+			formData: { name, email },
+		})
 	}
-
-	await createUser({ name, email, password_hash })
-	res.json({ success: true, message: "Usuário criado com sucesso" })
 }
 
 export async function getLogin(req: Request, res: Response) {
@@ -26,40 +42,43 @@ export async function getLogin(req: Request, res: Response) {
 export async function postLogin(req: Request, res: Response) {
 	const { email, password } = req.body
 
-	const user = await findUserByEmail(email)
-	if (!user) {
-		return res.status(400).json({ success: false, message: "E-mail ou senha inválidos" })
-	}
-
-	const validPassword = await bcrypt.compare(password, user.password_hash)
-	if (!validPassword) {
-		return res.status(400).json({ success: false, message: "E-mail ou senha inválidos" })
-	}
-
-	req.session.regenerate((err) => {
-		if (err) {
-			return res.status(500).json({
-				success: false,
-				message: "Falha no login. Tente novamente.",
+	try {
+		const user = await findUserByEmail(email)
+		if (!user) {
+			return res.render("login", {
+				error: "E-mail ou senha inválidos",
+				formData: { email },
 			})
 		}
 
-		Object.assign(req.session, { userId: user.id })
-		req.session.save((err) => {
-			if (err) {
-				return res.status(500).json({
-					success: false,
-					message: "Falha no login. Tente novamente.",
-				})
-			}
-			res.json({ success: true, message: "Login realizado com sucesso" })
+		const isValidPassword = await bcrypt.compare(
+			password,
+			user.password_hash
+		)
+		if (!isValidPassword) {
+			return res.render("login", {
+				error: "E-mail ou senha inválidos",
+				formData: { email },
+			})
+		}
+
+		// Configurar sessão
+		;(req.session as any).userId = user.id(req.session as any).userName =
+			user.name
+
+		// Redirecionar para listas
+		res.redirect("/shopping-lists")
+	} catch (error) {
+		res.render("login", {
+			error: "Erro interno do servidor. Tente novamente.",
+			formData: { email },
 		})
-	})
+	}
 }
 
 export function logout(req: Request, res: Response) {
 	req.session.destroy(() => {
-		res.json({ success: true, message: "Logout realizado com sucesso" })
+		res.redirect("/")
 	})
 }
 

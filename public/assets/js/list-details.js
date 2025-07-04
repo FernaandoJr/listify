@@ -5,13 +5,13 @@ let itens = []
 // Inicializar
 async function iniciar() {
 	if (!(await verificarLogin())) {
-		window.location.href = "/login.html"
+		window.location.href = "/login"
 		return
 	}
 
 	idLista = new URLSearchParams(window.location.search).get("id")
 	if (!idLista) {
-		window.location.href = "/shopping-lists.html"
+		window.location.href = "/shopping-lists"
 		return
 	}
 
@@ -146,7 +146,7 @@ function mostrarItens() {
 // Logout
 function logout() {
 	localStorage.removeItem("token")
-	window.location.href = "/login.html"
+	window.location.href = "/login"
 }
 
 document.addEventListener("DOMContentLoaded", iniciar)

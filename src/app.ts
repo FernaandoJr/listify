@@ -5,10 +5,14 @@ import path from "path"
 const app = express()
 const PORT = 3000
 
+// View engine setup (para usar templates EJS)
+app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, '..', 'src', 'views'))
+
 // Middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(express.static(path.join(__dirname, "..", "public")))
+app.use('/assets', express.static(path.join(__dirname, "..", "public", "assets")))
 
 // Debug middleware
 app.use((req, res, next) => {
@@ -28,20 +32,17 @@ app.use(
 	})
 )
 
-// Rotas de API
+// Rotas
 import authRoutes from "./routes/auth"
 import shoppingListRoutes from "./routes/shoppingList"
+import viewsRoutes from "./routes/views"
+
+// Rotas de API
 app.use("/api", authRoutes)
 app.use("/api/shopping-lists", shoppingListRoutes)
 
-// Rota para a página inicial
-app.get("/", (req, res) => {
-	if (req.session && (req.session as any).userId) {
-		res.redirect("/shopping-lists.html")
-	} else {
-		res.redirect("/index.html")
-	}
-})
+// Rotas das páginas
+app.use("/", viewsRoutes)
 
 app.listen(PORT, () => {
 	console.log(`Servidor rodando em http://localhost:${PORT}`)

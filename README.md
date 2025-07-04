@@ -8,35 +8,6 @@ Uma aplicação web simples e prática para criar e gerenciar suas listas de com
 - **Luis Felipe Piasentini** - [GitHub](https://github.com/LuisPiasentini)
 
 
-## 🏗️ Arquitetura MVC
-
-### **Model** (`src/models/`)
-Responsável pelos dados e lógica de negócio:
-- `user.ts` - Modelo de usuário
-- `shoppingList.ts` - Modelo de lista de compras
-
-### **View** (`src/views/`)
-Interface do usuário (templates EJS):
-- `index.ejs` - Página inicial com funcionalidades dinâmicas
-- `login.ejs` - Página de login com validação em tempo real
-- `register.ejs` - Página de cadastro com validador de senha
-- `shopping-lists.ejs` - Listagem com contador dinâmico
-- `list-details.ejs` - Detalhes com estatísticas em tempo real
-
-### **Controller** (`src/controllers/`)
-Lógica de controle da aplicação:
-- `auth.ts` - Controle de autenticação
-- `shoppingList.ts` - Controle das listas de compras
-- `views.ts` - Controle das páginas/views
-
-## 📱 O que faz
-
-- ✅ Criar e organizar listas de compras
-- ✅ Adicionar itens com quantidade
-- ✅ Marcar itens como comprados
-- ✅ Acompanhar progresso das compras
-- ✅ Sistema de login seguro
-
 ## 🛠️ Tecnologias
 
 **Backend:**
@@ -48,6 +19,7 @@ Lógica de controle da aplicação:
 - HTML, CSS e JavaScript
 - Tailwind CSS para estilização
 - Interface responsiva
+
 
 ## 🚀 Como usar
 
@@ -99,6 +71,28 @@ Este comando faz **tudo automaticamente**:
 3. **Crie listas** de compras
 4. **Adicione itens** às suas listas
 5. **Marque itens** como comprados durante as compras
+
+
+## 🏗️ Arquitetura MVC
+
+### **Model** (`src/models/`)
+Responsável pelos dados e lógica de negócio
+
+### **View** (`src/views/`)
+Interface do usuário (templates EJS)
+
+### **Controller** (`src/controllers/`)
+Lógica de controle da aplicação
+
+## 📱 O que faz
+
+- ✅ Criar e organizar listas de compras
+- ✅ Adicionar itens com quantidade
+- ✅ Marcar itens como comprados
+- ✅ Acompanhar progresso das compras
+- ✅ Sistema de login seguro
+
+
 
 ## 📋 Comandos disponíveis
 
@@ -188,14 +182,7 @@ Este projeto está licenciado sob a licença MIT.
    - Navegação intuitiva
    - Feedback visual imediato
    - Design consistente em todas as páginas
+  
 
-### 🎯 **Funcionalidades EJS Implementadas:**
 
-- **Renderização dinâmica** baseada no estado do usuário
-- **Loops e condicionais** para mostrar dados
-- **Validação em tempo real** com JavaScript integrado
-- **Formatação automática** de datas e quantidades
-- **Estados de loading** e feedback visual
-- **Auto-save** de formulários
-- **Contador dinâmico** de itens e listas
-- **Indicadores de progresso** em tempo real
+Obrigado pela atenção ♥️

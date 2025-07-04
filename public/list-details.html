@@ -7,13 +7,27 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="text-3xl">🛒</span>
+                <h1 class="text-2xl font-bold text-gray-800">Listify</h1>
+            </div>
+            <div class="flex gap-4 items-center justify-center">
+                <a href="/shopping-lists.html" class="text-blue-600 hover:text-blue-800 font-medium transition-colors">
+                    ← Minhas Listas
+                </a>
+                <button id="logout-btn" class="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                    Sair
+                </button>
+            </div>
+        </div>
+    </header>
+
     <div class="max-w-6xl mx-auto px-4 py-8">
-        <div class="flex items-center gap-4 mb-8">
-            <a href="/shopping-lists.html" 
-               class="bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 flex items-center gap-2">
-                ← Voltar às Listas
-            </a>
-            <h1 id="list-title" class="text-4xl font-bold text-gray-800">🛒 Carregando...</h1>
+        <div class="mb-8">
+            <h2 id="list-title" class="text-3xl font-bold text-gray-800">🛒 Carregando...</h2>
         </div>
 
         <div class="space-y-8">

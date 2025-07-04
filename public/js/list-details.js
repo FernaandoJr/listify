@@ -18,6 +18,7 @@ async function iniciar() {
 	document
 		.getElementById("add-item-form")
 		.addEventListener("submit", adicionarItem)
+	document.getElementById("logout-btn").addEventListener("click", logout)
 	await carregarItens()
 }
 
@@ -140,6 +141,12 @@ function mostrarItens() {
 		div.appendChild(botao)
 		container.appendChild(div)
 	})
+}
+
+// Logout
+function logout() {
+	localStorage.removeItem("token")
+	window.location.href = "/login.html"
 }
 
 document.addEventListener("DOMContentLoaded", iniciar)

@@ -3,6 +3,7 @@ import {
 	getShoppingLists,
 	createList,
 	getListDetails,
+	getListItems,
 	addItem,
 	toggleItemPurchased,
 	removeItem,
@@ -22,9 +23,10 @@ router.use(ensureAuthenticated)
 router.get("/", getShoppingLists)
 router.post("/", validateShoppingList, handleValidationErrors, createList)
 router.get("/:id", getListDetails)
+router.get("/:id/items", getListItems)
 router.post("/:id/items", validateShoppingItem, handleValidationErrors, addItem)
-router.post("/:id/items/:itemId/toggle", toggleItemPurchased)
-router.post("/:id/items/:itemId/delete", removeItem)
-router.post("/:id/delete", removeList)
+router.put("/:id/items/:itemId/toggle", toggleItemPurchased)
+router.delete("/:id/items/:itemId", removeItem)
+router.delete("/:id", removeList)
 
 export default router

@@ -5,6 +5,7 @@ import {
 	getLogin,
 	postLogin,
 	logout,
+	getProfile,
 } from "../controllers/auth"
 import {
 	validateRegistration,
@@ -14,13 +15,7 @@ import {
 
 const router = Router()
 
-router.get("/", (req, res) => {
-	if (req.session && (req.session as any).userId) {
-		res.redirect("/shopping-lists")
-	} else {
-		res.redirect("/login")
-	}
-})
+router.get("/profile", getProfile)
 
 router.get("/register", getRegister)
 router.post(
@@ -33,8 +28,6 @@ router.post(
 router.get("/login", getLogin)
 router.post("/login", validateLogin, handleValidationErrors, postLogin)
 
-router.get("/logout", logout)
-
-router.get("/logout", logout)
+router.post("/logout", logout)
 
 export default router

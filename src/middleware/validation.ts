@@ -1,4 +1,4 @@
-const { body, validationResult } = require("express-validator")
+import { body, validationResult } from "express-validator"
 import { Request, Response, NextFunction } from "express"
 
 export const validateRegistration = [
@@ -58,16 +58,12 @@ export const handleValidationErrors = (
 		const errorMessages = errors.array().map((error: any) => error.msg)
 		const errorMessage = errorMessages.join(", ")
 
-		// Return to previous page with error
-		const referer = req.get("Referer") || "/"
-
-		if (referer.includes("/login")) {
-			return res.render("login", { error: errorMessage })
-		} else if (referer.includes("/register")) {
-			return res.render("register", { error: errorMessage })
-		} else {
-			return res.redirect("back")
-		}
+		// Return JSON error response
+		return res.status(400).json({
+			success: false,
+			message: errorMessage,
+			errors: errors.array()
+		})
 	}
 
 	next()

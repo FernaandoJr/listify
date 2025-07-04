@@ -7,6 +7,9 @@ Uma aplicação web simples e prática para criar e gerenciar suas listas de com
 - **Fernando Divino** - [GitHub](https://github.com/FernaandoJr)
 - **Luis Felipe Piasentini** - [GitHub](https://github.com/LuisPiasentini)
 
+
+@LuisPiasentini
+
 ## 🏗️ Arquitetura MVC
 
 ### **Model** (`src/models/`)
